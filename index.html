@@ -1,25 +1,58 @@
 <!DOCTYPE html>
 <html>
-	 <style>
+     <style>
 body {
   background-image: url('https://img1.wsimg.com/isteam/ip/08e97a06-7351-431a-b172-3fb26e9f9485/LAMBOTBACKGROUND%20-%20Copy.png/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1920,m');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+
+
 }
-	</style> 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="with=device-width, initial-scale=1">
-		<title>LAMBO</title>
-	</head>
-	<body style="background-color:#424242;">
+ button { 
+    padding: 0;
+    border: none;
+    background: none; 
+    margin-top: 100px;
+  }
 
-		<center>
-			
-			<img src="https://i.imgur.com/q37qXLr.png" alt="centered image">
-		
-		</center>
+}
+ img { 
+    width: 400px;
+    margin-top: 100px; 
+  }
 
-	<body>
+  div { 
+
+    </style> 
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="with=device-width, initial-scale=1">
+        <title>LAMBO</title>
+
+<body>
+    
+
+    <div align="center"> 
+ <button type="button" onclick="hello()" class="unstyled-button">
+   <img src="https://i.imgur.com/G7NRsRt.png" width="800" 
+     height="500"/>
+</button>
+
+
+    <script type="text/javascript">
+
+    var clicks = 0;
+    function hello() {
+        clicks += 1;
+        document.getElementById("clicks").innerHTML = clicks;
+    };
+    </script>
+
+    <p style="font-family:'Courier New'"><font size="40"> <b>Breads: <a id="clicks">0</a></b></font></p>
+
+</div>
+</body>
 </html>
+
+
