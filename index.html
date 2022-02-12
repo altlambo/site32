@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-     <style>
+<meta charset="utf-8">
+<meta name="viewport" content="with=device-width, initial-scale=1">
+<style type="text/css">
 body {
   background-image: url('https://i.imgur.com/PssS2Hf.jpg');
   background-repeat: no-repeat;
@@ -16,17 +18,64 @@ body {
     margin-top: 100px;
   }
 
+.strokeme
+{
+    font-size: 40px;
+    color: white;
+    text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;  
+    font-family: Impact, Charcoal, sans-serif;
+    
+}
+
+.sl
+{
+    padding: 2;
+    border: #000;
+    background: #000; 
+    color: white;
+}
+
+.myButton {
+	box-shadow: 3px 4px 0px 0px #899599;
+	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	background-color:#ededed;
+	border-radius:15px;
+	border:1px solid #d6bcd6;
+	display:inline-block;
+	cursor:pointer;
+	color:#3a8a9e;
+	font-family:Arial;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+	background-color:#bab1ba;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
 }
  img { 
     width: 400px;
     margin-top: 100px; 
   }
-
+}
+ p { 
+    margin-top: 1000px; 
+  }
   div { 
     </style> 
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="with=device-width, initial-scale=1">
+        
         <title>Bread Clicker</title>
         <link rel="icon" href="https://i.imgur.com/G7NRsRt.png" type="image/icon type">
 
@@ -35,21 +84,46 @@ body {
 
     <div align="center"> 
  <button type="button" onclick="hello()" class="unstyled-button">
-   <img src="https://i.imgur.com/G7NRsRt.png" width="800" 
-     height="500"/>
+   <img src="https://i.imgur.com/8138yBN.png" width="800" 
+     height="480"/>
 </button>
 
 
     <script type="text/javascript">
-
     var clicks = 0;
+
+    function save() {
+			localStorage.save = clicks;
+			console.log("saved ur score of:")
+			console.log(clicks)
+		}
+		function load() {
+			console.log("loading ur score of:")
+			console.log(localStorage.save)
+			clicks = eval(localStorage.save);
+			document.getElementById("clicks").innerHTML = clicks;
+		}
+
+		function restart() {
+			clicks = 0;
+			document.getElementById("clicks").innerHTML = clicks;
+		}
+
+
+
     function hello() {
-        clicks += 1;
+        
+        clicks = clicks + 1;
         document.getElementById("clicks").innerHTML = clicks;
     };
     </script>
 
-    <p style="font-family:'Courier New'"><font size="40"> <b>Breads: <a id="clicks">0</a></b></font></p>
+    <p class="strokeme"><b>Breads: <a id="clicks">0</a></b></font></p>
+
+<a href="#" class="myButton"onclick="save()">Save</a>
+<a href="#" class="myButton"onclick="load()">Load</a>
+<a href="#" class="myButton"onClick="window.location.reload(true)">Restart</a>
+
 
 </div>
 </body>
