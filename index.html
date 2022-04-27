@@ -4,10 +4,11 @@
 <meta name="viewport" content="with=device-width, initial-scale=1">
 <style type="text/css">
 body {
-  background-image: url('https://i.imgur.com/PssS2Hf.jpg');
+/*  background-image: url('https://i.imgur.com/9HvSVCh.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: cover;*/
+  background-color: #b38358;
 
 
 }
@@ -15,7 +16,7 @@ body {
     padding: 0;
     border: none;
     background: none; 
-    margin-top: 100px;
+    margin-top: 0px;
   }
 
 .strokeme
@@ -31,6 +32,25 @@ body {
     
 }
 
+
+
+.font
+{
+ font-family: Helvetica; 
+ font-size: 44px; 
+ font-style: normal; 
+ font-variant: small-caps; 
+ font-weight: bold; 
+ color: #ffffff;
+ text-shadow:
+-2px -2px 0  #7D5D3B,
+2px -2px 0 #7D5D3B,
+-2px 2px 0 #7D5D3B,
+2px 2px 0 #7D5D3B;  
+} 
+
+
+
 .sl
 {
     padding: 2;
@@ -40,59 +60,82 @@ body {
 }
 
 .myButton {
-	box-shadow: 3px 4px 0px 0px #899599;
-	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
-	background-color:#ededed;
-	border-radius:15px;
-	border:1px solid #d6bcd6;
-	display:inline-block;
-	cursor:pointer;
-	color:#3a8a9e;
-	font-family:Arial;
-	font-size:17px;
-	padding:7px 25px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #e1e2ed;
+    background-color:#7d5d3b;
+    border-radius:3px;
+    border:2px solid #54381e;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:13px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
 }
 .myButton:hover {
-	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
-	background-color:#bab1ba;
+    background-color:#634b30;
 }
 .myButton:active {
-	position:relative;
-	top:1px;
+    position:relative;
+    top:1px;
 }
+
+
 
 }
  img { 
-    width: 400px;
-    margin-top: 100px; 
+    margin-top: 0px; 
   }
 }
  p { 
-    margin-top: 1000px; 
+    margin-top: 0px; 
   }
   div { 
     </style> 
     <head>
         
         <title>Bread Clicker</title>
-        <link rel="icon" href="https://i.imgur.com/G7NRsRt.png" type="image/icon type">
+        <link rel="icon" href="https://i.imgur.com/7u1bUH9.png" type="image/icon type">
 
 <body>
+
+
+
+
+<script>
+    function PlaySound() {
+    if (localStorage.mute === "false") {
+            var element = document.createElement('div');
+            element.innerHTML = '<audio id="ClickSound" controls autoplay source src="sound.mp3" type="audio/mpeg">';
+            }
+    }
+
+
+
+    function Change() {
+        const img = document.getElementById("bread");
+        img.src = "https://i.imgur.com/2u015aY.png";
+    }
     
+    function Revert() {
+        const img = document.getElementById("bread");
+        img.src = "https://i.imgur.com/7u1bUH9.png";
+    }
+
+
+/*https://i.imgur.com/2u015aY.png*/
+</script>
 
     <div align="center"> 
- <button type="button" onclick="hello()" class="unstyled-button">
-   <img src="https://i.imgur.com/8138yBN.png" width="800" 
-     height="480"/>
+ <button type="button" onclick="hello(); PlaySound()" onmousedown="Change()" onmouseup="Revert()" class="unstyled-button">
+   <img id="bread" align=middle src="https://i.imgur.com/7u1bUH9.png" width="800" 
+     height="690"/>
 </button>
 
 
     <script type="text/javascript">
     var clicks = 0;
-
-    function save() {
+        function save() {
 			localStorage.save = clicks;
 			console.log("saved ur score of:")
 			console.log(clicks)
@@ -104,9 +147,20 @@ body {
 			document.getElementById("clicks").innerHTML = clicks;
 		}
 
-		function restart() {
-			clicks = 0;
-			document.getElementById("clicks").innerHTML = clicks;
+		function mute() {
+			if (localStorage.mute === "true") {
+                localStorage.mute = false
+                console.log("mute is now disabled")
+            
+            }
+            else {
+                localStorage.mute = true
+                console.log("mute is now enabled")
+            }
+            if (localStorage.mute === undefined) {
+                localStorage.mute = true
+                console.log("mute is now enabled")
+            }
 		}
 
 
@@ -118,11 +172,15 @@ body {
     };
     </script>
 
-    <p class="strokeme"><b>Breads: <a id="clicks">0</a></b></font></p>
+
+
+
+    <p class="font" id="text_count" onload="move_img()"><b>Breads: <a id="clicks">0</a></b></font></p>
 
 <a href="#" class="myButton"onclick="save()">Save</a>
 <a href="#" class="myButton"onclick="load()">Load</a>
 <a href="#" class="myButton"onClick="window.location.reload(true)">Restart</a>
+<a href="#" class="myButton"onclick="mute()">Toggle Mute</a>
 
 
 </div>
